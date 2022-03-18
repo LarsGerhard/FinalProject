@@ -8,14 +8,13 @@ from scipy.constants import e, m_p
 
 B0 = 1e-4  # In Teslas, out of the page
 
-n1 = -1  # Charge of the particle (in elementary charge)
+qu = 2  # Charge of the particle (in elementary charge)
 
-n2 = 1  # Mass of the particle (In proton masses)
+mu = 2  # Mass of the particle (In proton masses)
 
-q0 = n1 * e  # Converts charge to be units of fundamental charge
+q0 = qu * e  # Converts charge to be units of fundamental charge
 
-m0 = n2 * m_p # Converts mass to be units of proton mass
-
+m0 = mu * m_p  # Converts mass to be units of proton mass
 
 tupper = 1e-3
 
@@ -64,16 +63,16 @@ y = y0
 
 # Determines colour of particle
 if q0 < 0:
-    c = (0,25,100 + 40 * abs(n1))
+    c = (0, 25, 100 + 40 * abs(qu))
 elif q0 > 0:
-    c = (100 + 40 * n1,25,0)
+    c = (100 + 40 * qu, 25, 0)
 else:
-    c = (0,50,0)
+    c = (0, 50, 0)
 
 hasrun = False
 
 if B0 > 0:
-    bg = pygame.image.load("dots.webp")
+    bg = pygame.image.load("dots.png")
 
 # infinite loop
 while run:
@@ -91,15 +90,31 @@ while run:
             # it will make exit the while loop
             run = False
 
-    win.fill((255,255,255))
-
-
+    win.fill((255, 255, 255))
 
     # drawing particle on screen
 
-    if hasrun == False:
+    if not hasrun:
         for i in range(len(t)):
-            pygame.time.delay(10)
+
+            pygame.time.delay(1)
+
+            win.fill((255, 255, 255))
+
+            if B0 != 0:
+                win.blit(bg, (-30, -30))
+
+            x += float(xvout[i]) * 40 * dt
+
+            y += float(yvout[i]) * 40 * dt
+
+            pygame.draw.circle(win, (0, 0, 0), (float(x), float(y)), 10 * mu + 3)
+
+            pygame.draw.circle(win, c, (float(x), float(y)), 10 * mu)
+
+            pygame.display.update()
+
+            # Exit and Hasrun Condition Checks
 
             for event in pygame.event.get():
 
@@ -110,23 +125,11 @@ while run:
                     # it will make exit the while loop
                     run = False
 
-
-
-            win.fill((255, 255, 255))
-
-            win.blit(bg, (-30, -30))
-
-            x += float(xvout[i]) * 40 * dt
-
-            y += float(yvout[i]) * 40 * dt
-
-            pygame.draw.circle(win, c, (float(x), float(y)), 10 * n2)
-            pygame.display.update()
-            if i == len(t) - 1:
+            if i >= len(t) - 1:
                 hasrun = True
                 break
 
-            if run == False:
+            if not run:
                 break
 
     # it refreshes the window

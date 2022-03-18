@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.12.20)  17 MAR 2022 20:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.12.20)  18 MAR 2022 12:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -378,14 +378,14 @@ Here is how much of TeX's memory you used:
  20664 multiletter control sequences out of 15000+600000
  412389 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 68i,6n,74p,323b,217s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,6n,74p,347b,217s stack positions out of 5000i,500n,10000p,200000b,80000s
  </
 home/thaseus/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on "Final Project.pdf" (1 page, 50422 bytes).
+Output written on "Final Project.pdf" (1 page, 50622 bytes).
 PDF statistics:
  29 PDF objects out of 1000 (max. 8388607)
  20 compressed objects within 1 object stream
