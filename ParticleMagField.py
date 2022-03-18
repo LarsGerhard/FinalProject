@@ -1,11 +1,31 @@
-from scipy.constants import e
+from scipy.integrate import odeint
 
-B0 = 10e-4 # In Teslas, out of the page
+# Differential Equation
 
-n = 1 # Charge of the particle (in elementary charge)
+def ratefunc(t, V, m, q, B):
+    # Determines the rate of change for position in both the x and y directions
+    # Unpack initial conditions
+    x, u, y, v = V
 
-q = n * e # Converts n to be fundamental charge
+    f = [u, ((q * B) / m) * v, v, (-(q * B) / m) * u]
 
-v0 = 3.1e4
+    return f
+
+# Solver
+
+def magFieldSolve(t, Vin, Pin):
+
+    sol = odeint(ratefunc, Vin, t, args=Pin, tfirst= True)
+
+    # Unpack positions and velocities
+
+    xout = sol[:,[0]]
+    xvout = sol[:,[1]]
+    yout = sol[:,[2]]
+    yvout = sol[:,[3]]
+
+    return xout, yout, xvout, yvout
+
+
 
 
