@@ -52,13 +52,6 @@ win = pygame.display.set_mode((720, 720))
 # set the pygame window name
 pygame.display.set_caption("Charged Particle in a Moving Magnetic Field (Simulation)")
 
-# dimensions of the object
-width = 20
-height = 20
-
-# velocity / speed of movement
-vel = 10
-
 # Indicates pygame is running
 run = True
 
@@ -68,6 +61,14 @@ xout, yout, xvout, yvout = magFieldSolve(t, Vin, Pin)
 
 x = x0
 y = y0
+
+# Determines colour of particle
+if q0 < 0:
+    c = (0,25,100 + 40 * abs(n1))
+elif q0 > 0:
+    c = (100 + 40 * n1,25,0)
+else:
+    c = (0,50,0)
 
 hasrun = False
 
@@ -96,31 +97,37 @@ while run:
 
     # drawing particle on screen
 
-    for i in range(len(t)):
-        pygame.time.delay(10)
+    if hasrun == False:
+        for i in range(len(t)):
+            pygame.time.delay(10)
 
-        for event in pygame.event.get():
+            for event in pygame.event.get():
 
-            # if event object type is QUIT
-            # then quitting the pygame
-            # and program both.
-            if event.type == pygame.QUIT:
-                # it will make exit the while loop
-                run = False
+                # if event object type is QUIT
+                # then quitting the pygame
+                # and program both.
+                if event.type == pygame.QUIT:
+                    # it will make exit the while loop
+                    run = False
+
+
+
+            win.fill((255, 255, 255))
+
+            win.blit(bg, (-30, -30))
+
+            x += float(xvout[i]) * 40 * dt
+
+            y += float(yvout[i]) * 40 * dt
+
+            pygame.draw.circle(win, c, (float(x), float(y)), 10 * n2)
+            pygame.display.update()
+            if i == len(t) - 1:
+                hasrun = True
                 break
 
-        win.fill((255, 255, 255))
-
-        win.blit(bg, (-30, -30))
-
-        x += float(xvout[i]) * 40 * dt
-
-        y += float(yvout[i]) * 40 * dt
-
-        pygame.draw.circle(win, (0, 255, 60), (float(x), float(y)), 10 * n2)
-        pygame.display.update()
-        if i == len(t) - 1:
-            run = False
+            if run == False:
+                break
 
     # it refreshes the window
     pygame.display.update()
