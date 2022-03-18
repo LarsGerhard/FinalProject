@@ -8,7 +8,7 @@ from scipy.constants import e, m_p
 
 B0 = 1e-4  # In Teslas, out of the page
 
-n1 = 1  # Charge of the particle (in elementary charge)
+n1 = -1  # Charge of the particle (in elementary charge)
 
 n2 = 1  # Mass of the particle (In proton masses)
 
