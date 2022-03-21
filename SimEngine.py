@@ -125,6 +125,7 @@ addmtext = subtitlefont.render(' +m', True, black)
 
 removemtext = subtitlefont.render('  -m', True, black)
 
+
 # Function for creating multiple buttons easily
 def Button(pos, w, h, text):
     buttonPressed = False
@@ -136,7 +137,6 @@ def Button(pos, w, h, text):
     # Renders Button
     if pos[0] - w / 2 <= mouse[0] <= pos[0] + w / 2 and pos[1] - h / 2 <= mouse[1] <= pos[1] + h / 2:
         pygame.draw.rect(win, buttonp, [pos[0] - w / 2, pos[1] - h / 2, w, h])
-
 
     else:
         pygame.draw.rect(win, buttonup, [pos[0] - w / 2, pos[1] - h / 2, w, h])
@@ -187,7 +187,7 @@ while run:
     if qu < 5 and not addq:
         addq = Button((100, 250), 100, 50, addqtext)
 
-    if addq and pygame.mouse.get_pressed()[0] == False:
+    if addq and pygame.mouse.get_pressed()[0] is False:
         qu += 1
         addq = False
 
@@ -195,7 +195,7 @@ while run:
     if qu > -5 and not removeq:
         removeq = Button((100, 325), 100, 50, removeqtext)
 
-    if removeq and pygame.mouse.get_pressed()[0] == False:
+    if removeq and pygame.mouse.get_pressed()[0] is False:
         qu -= 1
         removeq = False
 
@@ -211,7 +211,7 @@ while run:
     if B0u < 5 and not addB:
         addB = Button((250, 250), 100, 50, addBtext)
 
-    if addB and pygame.mouse.get_pressed()[0] == False:
+    if addB and pygame.mouse.get_pressed()[0] is False:
         B0u += 1
         addB = False
 
@@ -219,12 +219,13 @@ while run:
     if B0u > -5 and not removeB:
         removeB = Button((250, 325), 100, 50, removeBtext)
 
-    if removeB and pygame.mouse.get_pressed()[0] == False:
+    if removeB and pygame.mouse.get_pressed()[0] is False:
         B0u -= 1
         removeB = False
 
     # Displays the current velocity
-    velocityCount = subtitlefont.render("The particle's initial velocity is: " + str(v0u) + " (Units: 10^4 m/s)", True, black)
+    velocityCount = subtitlefont.render("The particle's initial velocity is: " + str(v0u) + " (Units: 10^4 m/s)", True,
+                                        black)
 
     win.blit(velocityCount, (100, 500))
 
@@ -235,7 +236,7 @@ while run:
     if v0u < 5 and not addv:
         addv = Button((400, 250), 100, 50, addvtext)
 
-    if addv and pygame.mouse.get_pressed()[0] == False:
+    if addv and pygame.mouse.get_pressed()[0] is False:
         v0u += 0.5
         addv = False
 
@@ -243,7 +244,7 @@ while run:
     if v0u > 0 and not removev:
         removev = Button((400, 325), 100, 50, removevtext)
 
-    if removev and pygame.mouse.get_pressed()[0] == False:
+    if removev and pygame.mouse.get_pressed()[0] is False:
         v0u -= 0.5
         removev = False
 
@@ -259,7 +260,7 @@ while run:
     if mu < 5 and not addm:
         addm = Button((550, 250), 100, 50, addmtext)
 
-    if addm and pygame.mouse.get_pressed()[0] == False:
+    if addm and pygame.mouse.get_pressed()[0] is False:
         mu += 1
         addm = False
 
@@ -267,7 +268,7 @@ while run:
     if mu > 1 and not removem:
         removem = Button((550, 325), 100, 50, removemtext)
 
-    if removem and pygame.mouse.get_pressed()[0] == False:
+    if removem and pygame.mouse.get_pressed()[0] is False:
         mu -= 1
         removem = False
 
