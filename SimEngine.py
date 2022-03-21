@@ -248,7 +248,7 @@ while run:
         removev = False
 
     # Displays the current mass
-    mCount = subtitlefont.render("The particle's mass is: " + str(mu) + " (Units: AU)", True, black)
+    mCount = subtitlefont.render("The particle's mass is: " + str(mu) + " (Units: AMU)", True, black)
 
     win.blit(mCount, (100, 550))
 
