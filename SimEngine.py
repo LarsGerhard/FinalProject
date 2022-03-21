@@ -176,9 +176,9 @@ while run:
     run = not Button((winLength - 50, winLength - 25), 100, 50, exitText)
 
     # Displays the current charge
-    chargeCount = subtitlefont.render("The particle's charge is: " + str(qu) + " e", True, black)
+    chargeCount = subtitlefont.render("The particle's charge is: " + str(qu) + " (Units: e)", True, black)
 
-    win.blit(chargeCount, (200, 400))
+    win.blit(chargeCount, (100, 400))
 
     # Creates charge button charge description:
     win.blit(chargetext, (50, 175))
@@ -200,9 +200,9 @@ while run:
         removeq = False
 
     # Displays the current B Field
-    BCount = subtitlefont.render("The magnetic field strength is: " + str(B0u) + "*10^-4 T", True, black)
+    BCount = subtitlefont.render("The magnetic field strength is: " + str(B0u) + " (Units: 10^-4 T)", True, black)
 
-    win.blit(BCount, (150, 450))
+    win.blit(BCount, (100, 450))
 
     # Creates B field button charge description:
     win.blit(Btext, (150, 175))
@@ -224,9 +224,9 @@ while run:
         removeB = False
 
     # Displays the current velocity
-    velocityCount = subtitlefont.render("The particle's initial velocity is: " + str(v0u) + "*10^4 m/s", True, black)
+    velocityCount = subtitlefont.render("The particle's initial velocity is: " + str(v0u) + " (Units: 10^4 m/s)", True, black)
 
-    win.blit(velocityCount, (150, 500))
+    win.blit(velocityCount, (100, 500))
 
     # Creates charge button charge description:
     win.blit(vtext, (350, 175))
@@ -248,9 +248,9 @@ while run:
         removev = False
 
     # Displays the current mass
-    mCount = subtitlefont.render("The particle's mass is: " + str(mu) + " AU", True, black)
+    mCount = subtitlefont.render("The particle's mass is: " + str(mu) + " (Units: AU)", True, black)
 
-    win.blit(mCount, (150, 550))
+    win.blit(mCount, (100, 550))
 
     # Creates charge button mass description:
     win.blit(mtext, (500, 175))
@@ -404,14 +404,6 @@ while run:
                 if event.type == pygame.QUIT:
                     run = False
             if not runexp:
-                # Set recommended initial parameters
-                qu = 1  # Charge of the particle (Unitless)
-
-                mu = 1  # Mass of the particle (Unitless)
-
-                B0u = 1  # Magnetic Field Strength (10e-4 Teslas)
-
-                v0u = 3  # Initial x Velocity (10^4 Metres / Second)
                 pygame.time.delay(100)
                 break
             if rerun:
